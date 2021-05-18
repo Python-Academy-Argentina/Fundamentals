@@ -50,8 +50,8 @@
 - La sentencia ***del***
 - Funciones
   - Cómo se definen
-  - Argumentos
-  - Argumentos predeterminados y con clave (keyword)
+  - Argumentos posicionales y con clave (keyword)
+  - Argumentos predeterminados
   - Listas arbitrarias de argumentos
   - Expresiones ***lambda***
 - Excepciones
