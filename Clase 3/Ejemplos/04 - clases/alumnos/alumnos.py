@@ -93,7 +93,7 @@ def crear_alumno():
     return Alumno(nombre, apellido)
 
 
-def buscar_alumno(id_):
+def buscar_alumno(id_, alumnos):
     """
     Devuelve un alumno de la lista.
     """
@@ -142,7 +142,7 @@ def main(**kwargs):
         elif opcion == 2:
             id_ = int(input('Ingresá el ID del alumno: '))
 
-            alumno = buscar_alumno(id_)
+            alumno = buscar_alumno(id_, alumnos)
             
             if not alumno:
                 print('El ID ingresado no existe.')
@@ -155,7 +155,7 @@ def main(**kwargs):
         elif opcion == 3:
             id_ = int(input('Ingresá el ID del alumno: '))
 
-            alumno = buscar_alumno(id_)
+            alumno = buscar_alumno(id_, alumnos)
             
             if not alumno:
                 print('El ID ingresado no existe.')
