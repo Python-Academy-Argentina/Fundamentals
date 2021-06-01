@@ -197,17 +197,15 @@ def main(**kwargs):
             print('Opción inválida.')
 
 
-if __name__ == '__main__':
+archivo = 'alumnos.txt'
 
-    archivo = 'alumnos.txt'
+try:
+    alumnos = [Alumno.desde_json(a) for a in open(archivo, 'r')]
+except OSError:
+    alumnos = []
 
-    try:
-        alumnos = [Alumno.desde_json(a) for a in open(archivo, 'r')]
-    except OSError:
-        alumnos = []
-
-    try:
-        main(alumnos=alumnos, archivo=archivo)
-    except KeyboardInterrupt:
-        print('\n')
-        exit()
+try:
+    main(alumnos=alumnos, archivo=archivo)
+except KeyboardInterrupt:
+    print('\n')
+    exit()
