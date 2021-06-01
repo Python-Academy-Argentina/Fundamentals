@@ -71,17 +71,16 @@
 - Leyendo y escribiendo archivos
   - La función ***open()***
   - La sentencia ***with***
-- Módulos
-  - Cómo importar módulos
-  - Creando nuestros propios módulos
-  - *\_\_init\_\_.py*
 - Clases
   - Cómo se definen
   - Objetos de clase e instancias
   - Métodos
 
 ### Clase 4
-- Más módulos
+- Módulos
+  - Cómo importar módulos
+  - Creando nuestros propios módulos
+  - *\_\_init\_\_.py*
   - Entornos virtuales
   - Manejando paquetes con ***pip***
 - HTTP requests:
