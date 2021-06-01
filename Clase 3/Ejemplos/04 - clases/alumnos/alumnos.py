@@ -110,7 +110,7 @@ def guardar(alumnos, archivo):
         f.writelines(renglones)
 
 
-def main(alumnos):
+def main(**kwargs):
     """
     Permite agregar alumnos, notas, e imprimir
     la lista de alumnos y sus promedios.
@@ -122,6 +122,9 @@ def main(alumnos):
     print('4. Imprimir la lista de alumnos')
     print('5. Guardar')
     print('0. Salir del programa')
+
+    alumnos = kwargs.get('alumnos')
+    archivo = kwargs.get('archivo')
 
     while True:
         opcion = int(input('\nOpción: '))
@@ -204,7 +207,7 @@ if __name__ == '__main__':
         alumnos = []
 
     try:
-        main(alumnos)
+        main(alumnos=alumnos, archivo=archivo)
     except KeyboardInterrupt:
         print('\n')
         exit()

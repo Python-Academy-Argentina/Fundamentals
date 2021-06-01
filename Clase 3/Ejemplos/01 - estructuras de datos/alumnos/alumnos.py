@@ -51,7 +51,7 @@ def generar_detalles(alumno):
     return f'ID: {id_}; Alumno: {nombre_completo}; Promedio: {promedio}'
 
 
-def main(alumnos):
+def main(**kwargs):
     """
     Menú del programa.
     Permite agregar alumnos, notas, e imprimir
@@ -62,6 +62,8 @@ def main(alumnos):
     print('2. Ingresar nota para un alumno')
     print('3. Imprimir la lista de alumnos')
     print('0. Salir del programa')
+
+    alumnos = kwargs.get('alumnos')
 
     while True:
         opcion = int(input('\nOpción: '))
@@ -102,7 +104,7 @@ def main(alumnos):
 alumnos = []
 
 try:
-    main(alumnos)
+    main(alumnos=alumnos)
 except KeyboardInterrupt:
     print('\n')
     exit()
