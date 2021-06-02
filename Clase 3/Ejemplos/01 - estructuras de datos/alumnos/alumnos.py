@@ -2,32 +2,17 @@
 # programa que permite crear diccionarios representando alumnos, asignar notas,
 # e imprimir información de interés
 
-def crear_alumno():
-    """
-    Devuelve un diccionario con el nombre, apellido,
-    nombre completo y notas (lista vacía).
-    """
-    nombre = input('Ingresá el primer nombre: ')
-    apellido = input('Ingresá el apellido: ')
-    alumno = {
-        'nombre': nombre,
-        'apellido': apellido,
-        'notas': []
-    }
-    return alumno
-
-
 def agregar_nota(alumno, nota):
-    """
+    '''
     Agrega <nota> a <alumno>.
-    """
+    '''
     alumno['notas'].append(nota)
 
 
 def calcular_promedio(alumno):
-    """
+    '''
     Devuelve el promedio de un alumno.
-    """
+    '''
     notas = alumno['notas']
 
     try:
@@ -39,9 +24,9 @@ def calcular_promedio(alumno):
 
 
 def generar_detalles(alumno):
-    """
+    '''
     Devuelve información de interés sobre un alumno.
-    """
+    '''
     id_ = alumno.get('id')
     nombre = alumno.get('nombre')
     apellido = alumno.get('apellido')
@@ -52,11 +37,11 @@ def generar_detalles(alumno):
 
 
 def main(**kwargs):
-    """
+    '''
     Menú del programa.
     Permite agregar alumnos, notas, e imprimir
     la lista de alumnos y sus promedios.
-    """
+    '''
     print('\nIngresá el número correspondiente a la opción deseada:\n')
     print('1. Ingresar nuevo alumno')
     print('2. Ingresar nota para un alumno')
@@ -68,14 +53,29 @@ def main(**kwargs):
     while True:
         opcion = int(input('\nOpción: '))
 
+        # nuevo alumno
         if opcion == 1:
-            alumno = crear_alumno()
+            nombre = input('Ingresá el primer nombre: ')
+            apellido = input('Ingresá el apellido: ')
+
+            # creamos el diccionario
+            alumno = {
+                'nombre': nombre,
+                'apellido': apellido,
+                'notas': []
+            }
+
+            # calculamos el ID según la cantidad
+            # de objetos en la lista de alumnos
             id_ = len(alumnos) + 1
-            # agrego 'id' al diccionario
+
+            # agregamos 'id' al diccionario
             alumno.update(id=id_)
-            # agrego el diccionario a la lista
+
+            # agregamos el diccionario a la lista
             alumnos.append(alumno)
 
+        # ingresar nota
         elif opcion == 2:
             id_ = int(input('Ingresá el ID del alumno: ')) - 1
 
@@ -88,11 +88,13 @@ def main(**kwargs):
                 # agregamos la nota
                 agregar_nota(alumno, nota)
 
+        # imprimir alumnos
         elif opcion == 3:
             for alumno in alumnos:
                 detalles = generar_detalles(alumno)
                 print(f'\n{detalles}')
 
+        # salir
         elif opcion == 0:
             print()
             exit()

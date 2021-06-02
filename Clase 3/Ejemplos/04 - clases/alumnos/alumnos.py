@@ -83,27 +83,17 @@ class Alumno:
         return cls(**json.loads(json_str))
 
 
-def crear_alumno():
-    """
-    Devuelve un objeto de tipo Alumno.
-    """
-    nombre = input('Ingresá el primer nombre: ')
-    apellido = input('Ingresá el apellido: ')
-
-    return Alumno(nombre, apellido)
-
-
-def buscar_alumno(id_, alumnos):
-    """
+def buscar_alumno(id_):
+    '''
     Devuelve un alumno de la lista.
-    """
+    '''
     return next((a for a in alumnos if a.id == id_), None)
 
 
 def guardar(alumnos, archivo):
-    """
+    '''
     Guarda la lista <alumnos> en <archivo> en formato JSON.
-    """
+    '''
     renglones = [alumno.a_json() + '\n' for alumno in alumnos]
 
     with open(archivo, 'w') as f:
@@ -111,13 +101,13 @@ def guardar(alumnos, archivo):
 
 
 def main(**kwargs):
-    """
+    '''
     Permite agregar alumnos, notas, e imprimir
     la lista de alumnos y sus promedios.
-    """
+    '''
     print('\nIngresá el número correspondiente a la opción deseada:\n')
     print('1. Ingresar nuevo alumno')
-    print('2. Ingresar nota para un alumno')
+    print('2. Ingresar una nota para un alumno')
     print('3. Borrar una nota de un alumno')
     print('4. Imprimir la lista de alumnos')
     print('5. Guardar')
@@ -131,19 +121,29 @@ def main(**kwargs):
 
         # nuevo alumno
         if opcion == 1:
-            alumno = crear_alumno()
+            nombre = input('Ingresá el primer nombre: ')
+            apellido = input('Ingresá el apellido: ')
+
+            # creamos una instancia de Alumno
+            alumno = Alumno(nombre, apellido)
+
+            # calculamos el ID según la cantidad
+            # de objetos en la lista de alumnos
             id_ = len(alumnos) + 1
-            # agrego el ID del alumno
+
+            # agregamos el ID del alumno
             alumno.id = id_
-            # agrego el objeto a la lista
+
+            # agregamos el objeto a la lista
             alumnos.append(alumno)
         
         # ingresar nota
         elif opcion == 2:
             id_ = int(input('Ingresá el ID del alumno: '))
 
-            alumno = buscar_alumno(id_, alumnos)
+            alumno = buscar_alumno(id_)
             
+            # si alumno == None
             if not alumno:
                 print('El ID ingresado no existe.')
             else:
@@ -155,12 +155,14 @@ def main(**kwargs):
         elif opcion == 3:
             id_ = int(input('Ingresá el ID del alumno: '))
 
-            alumno = buscar_alumno(id_, alumnos)
+            alumno = buscar_alumno(id_)
             
+            # si alumno == None
             if not alumno:
                 print('El ID ingresado no existe.')
                 continue
 
+            # si no hay notas
             if len(alumno.notas) == 0:
                 print('\nNo hay notas para mostrar.')
                 continue
@@ -179,12 +181,14 @@ def main(**kwargs):
         # imprimir alumnos
         elif opcion == 4:
             for alumno in alumnos:
+                # print() llama a alumno.__str__()
                 print(f'\n{alumno}')
 
         # guardar alumnos
         elif opcion == 5:
             try:
                 guardar(alumnos, archivo)
+                print('La lista se guardó correctamente.')
             except OSError:
                 print('No se pudo guardar la lista de alumnos.')
 
