@@ -83,7 +83,7 @@ class Alumno:
         return cls(**json.loads(json_str))
 
 
-def buscar_alumno(id_):
+def buscar_alumno(alumnos, id_):
     '''
     Devuelve un alumno de la lista.
     '''
@@ -141,7 +141,7 @@ def main(**kwargs):
         elif opcion == 2:
             id_ = int(input('Ingresá el ID del alumno: '))
 
-            alumno = buscar_alumno(id_)
+            alumno = buscar_alumno(alumnos, id_)
             
             # si alumno == None
             if not alumno:
@@ -155,7 +155,7 @@ def main(**kwargs):
         elif opcion == 3:
             id_ = int(input('Ingresá el ID del alumno: '))
 
-            alumno = buscar_alumno(id_)
+            alumno = buscar_alumno(alumnos, id_)
             
             # si alumno == None
             if not alumno:
