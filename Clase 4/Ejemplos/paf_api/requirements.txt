@@ -1,0 +1,7 @@
+Django==3.1
+django-extensions
+django-filter
+djangorestframework
+gunicorn
+sqlparse
+whitenoise
