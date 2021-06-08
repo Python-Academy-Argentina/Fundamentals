@@ -86,9 +86,6 @@
 - HTTP requests:
   - El módulo ***requests***
   - Mandando HTTP requests
-- Una introducción a *Data Frames*
-  - El módulo ***pandas***
-  - Trabajando con archivos CSV
 
 ## Otros recursos
 ### Contenido en español
