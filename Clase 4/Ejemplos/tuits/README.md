@@ -4,7 +4,7 @@
 
 ## Config
 
-Completá las dos variables en ```config.py``` y ejecuta ```app.py```.
+Completá las dos variables en ```config.py``` y ejecutá ```app.py```.
 
 ```python
 address = 'ejemplo.com.ar'

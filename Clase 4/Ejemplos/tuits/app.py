@@ -315,11 +315,8 @@ def crear_nuevo_usuario(client):
     if respuesta.status_code != 201:
         errores = respuesta.json()
 
-        if 'username' in errores:
-            print(f'\nUsuario: {errores.get("username")[0]}')
-
-        if 'password' in errores:
-            print(f'\nContraseña: {errores.get("password")[0]}')
+        for clave, valor in errores.items():
+            print(f'\n{clave.capitalize()}: {valor[0]}')
 
         print('\n'*2)
         print('1. Intentar de nuevo')
